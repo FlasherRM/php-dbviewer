@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DB Viewer - {{ database }}</title>
+    <link rel="stylesheet" type="text/css" href="../assets/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f1f1f1;
+        }
+
+        .content {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            height: 70vh;
+            width: 68%;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .table-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .table-list li {
+            margin-bottom: 10px;
+        }
+
+        .table-list li a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #f5f5f5;
+            color: #333;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .table-list li a:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
+
+</head>
+<body>
+<div class="container">
+    {% include 'sidebar.html' with {'databases': databases} %}
+    <div class="content">
+        <h1>DB Viewer - {{ database }}</h1>
+        <ul class="table-list">
+            {% for table in tables %}
+            <li>
+                <a href="table.php?database={{ database }}&table={{ table.getName() }}">{{ table.getName() }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+</body>
+</html>

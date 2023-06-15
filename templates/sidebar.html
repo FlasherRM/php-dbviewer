@@ -1,0 +1,32 @@
+<!-- sidebar.html -->
+<ul class="database-list">
+    {% for database in databases %}
+    <li>
+        <div class="database-item">
+            <button class="database-toggle" data-database="{{ database.getName() }}" onclick="toggleTables('{{ database.getName() }}')">+</button>
+            <a href="database.php?name={{ database.getName() }}">{{ database.getName() }}</a>
+        </div>
+        <ul style="display: none" class="table-list" id="{{ database.getName() }}-tables">
+            {% for table in database.getTables() %}
+            <li>
+                <a href="table.php?database={{ database.getName() }}&table={{ table.getName() }}">{{ table.getName() }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </li>
+    {% endfor %}
+</ul>
+<script>
+    function toggleTables(databaseName) {
+        var tables = document.getElementById(databaseName + "-tables");
+        var button = document.querySelector("button[data-database='" + databaseName + "']");
+
+        if (tables.style.display === "none" || tables.style.display === "") {
+            tables.style.display = "block";
+            button.innerHTML = "-";
+        } else {
+            tables.style.display = "none";
+            button.innerHTML = "+";
+        }
+    }
+</script>
