@@ -5,10 +5,26 @@
     <link rel="stylesheet" type="text/css" href="assets/style.css">
 </head>
 <body>
+
+{% include 'addDBModal.html' %}
+
+<!-- Проверка на уведомление -->
+{% if message == 'exist' %}
+<div class="message red">Database already exist</div>
+{% elseif message == 'successfully'%}
+<div class="message green">Database created successfully</div>
+{% else %}
+{% endif %}
+
+
 <div class="container">
     {% include 'sidebar.html' with {'databases': databases} %}
-    <h1>DB Viewer</h1>
-
+    <div class="welcome_content">
+        <h1 class="main_text">DB Viewer</h1>
+        <a href="http://0.0.0.0:3000/databases.php">See all databases!</a>
+    </div>
 </div>
+
+<script src="assets/script.js"></script>
 </body>
 </html>

@@ -1,0 +1,4 @@
+- new database list, stylized, page
+- "add database" feature
+- new sidebar
+- delete database button

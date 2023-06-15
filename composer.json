@@ -1,6 +1,6 @@
 {
     "name": "romanmelnyk/dbviewer",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "Simple DB-Viewer for mysql database, in 1.0.0 no CREATE, UPDATE, DELETE function exist, just READ. In next version i'm going to add full CRUD functionality",
     "type": "project",
     "keywords": [

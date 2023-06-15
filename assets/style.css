@@ -1,3 +1,6 @@
+body {
+    margin-top: 100px;
+}
 .container {
     max-width: 1400px;
     margin: 0 auto;
@@ -5,6 +8,92 @@
     display: flex;
 }
 
+.welcome_content {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 500px;
+    width: 60%;
+
+    border-radius: 10px;
+    background: #dddddd;
+}
+.welcome_content .main_text {
+    font-size: 100px;
+}
+
+.welcome_content a {
+    font-size: 70px;
+    padding: 20px;
+    border: 2px solid gray;
+    border-radius: 6px;
+    background: #cccccc;
+    color: white;
+}
+.welcome_content a:hover {
+    text-decoration: none;
+    background: #969696;
+}
+
+.databases_menu {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 500px;
+    width: 70%;
+    padding: 20px;
+
+    border-radius: 10px;
+    background-color: #f1f1f1;
+}
+
+
+.databases_menu h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.main_list_of_databases {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    width: 100%;
+
+    height: 100%; /* Пример фиксированной высоты */
+    overflow: auto; /* Добавляем ограниченный скролл */
+}
+.main_list_of_databases li {
+    margin-bottom: 0;
+}
+
+.database-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid black;
+}
+
+.database-item a {
+    flex-grow: 1;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.database-item .database_icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    background-color: lightgray;
+}
+
+.database-item .delete_button {
+    padding: 5px 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    margin-left: 10px;
+}
 h1 {
     text-align: center;
 }
@@ -27,12 +116,16 @@ a:hover {
     text-decoration: underline;
 }
 
-/* style.css */
 .database-list {
     list-style: none;
-    padding: 0;
+    padding: 10px;
     margin: 0;
     width: 400px;
+    height: 500px;
+    overflow: auto;
+
+    border: 1px solid black;
+    border-radius: 6px;
 }
 
 .database-item {
@@ -57,12 +150,13 @@ a:hover {
 .table-list {
     list-style: none;
     padding: 0;
-    margin: 0;
-    margin-left: 20px;
+    margin: 0 0 0 20px;
     display: block;
     max-height: 500px;
     overflow-y: auto;
     width: 95%;
+
+
 }
 
 .table-list li {
@@ -88,3 +182,120 @@ a:hover {
 .table-list li {
     margin-bottom: 5px;
 }
+
+.add_new_db {
+    margin-top: 30px;
+    padding: 20px 0;
+    width: 100%;
+    border-radius: 6px;
+    border: 2px solid black;
+    font-style: italic;
+    color: #333333;
+    background: #1579dc;
+    cursor: pointer;
+    font-size: 20px;
+
+    transition: .3s linear;
+}
+
+.add_new_db:hover {
+    background: #066ad7;
+}
+
+
+.message {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 4px;
+    animation: slideIn 0.3s ease-in-out forwards;
+}
+.message.red {
+    background: #ff5454;
+}
+.message.green {
+    background: #00d300;
+}
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+/* Модальное окно */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.modal {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content {
+    margin-bottom: 20px;
+}
+
+.modal-input {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.modal-input label {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.modal-input input[type="text"] {
+    padding: 8px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.modal-actions button {
+    padding: 8px 16px;
+    margin-left: 10px;
+    background-color: #3897f0;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.modal-actions .close_modal {
+    background: #f33333;
+}
+
+/* Отображение модального окна */
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+

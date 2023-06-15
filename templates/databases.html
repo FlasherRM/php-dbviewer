@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DB Viewer</title>
+    <link rel="stylesheet" type="text/css" href="assets/style.css">
+</head>
+<body>
+
+{% include 'addDBModal.html' %}
+
+<!-- Проверка на уведомление -->
+{% if message == 'exist' %}
+<div class="message red">Database already exist</div>
+{% elseif message == 'successfully'%}
+<div class="message green">Database created successfully</div>
+{% else %}
+{% endif %}
+
+
+<div class="container">
+    {% include 'sidebar.html' with {'databases': databases} %}
+    <div class="databases_menu">
+        <h1>List of Databases</h1>
+        <ul class="main_list_of_databases">
+            {% for database in databases %}
+            <li style="list-style: none">
+                <div class="database-item">
+                    <div class="database_icon"></div>
+                    <a href="database.php?name={{ database.getName() }}">{{ database.getName() }}</a>
+                    <button style="cursor: pointer" onclick="location.href='http://0.0.0.0:3000/database/delete.php?name-{{ database.getName() }}'" class="delete_button">Удалить</button>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<script src="assets/script.js"></script>
+</body>
+</html>

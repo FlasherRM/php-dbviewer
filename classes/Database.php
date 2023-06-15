@@ -4,23 +4,6 @@ require_once 'Models/DatabaseModel.php';
 require_once 'Connection.php';
 
 class Database extends Connection {
-
-//    public function getDatabases() {
-//        $conn = $this->mysqlConnection();
-//
-//        $result = $conn->query("SHOW DATABASES");
-//        $databases = [];
-//
-//        if ($result->num_rows > 0) {
-//            while ($row = $result->fetch_assoc()) {
-//                $databases[] = $row["Database"];
-//            }
-//        }
-//
-//        $conn->close();
-//
-//        return $databases;
-//    }
     public function getDatabases() {
         $conn = $this->mysqlConnection();
 
@@ -65,6 +48,14 @@ class Database extends Connection {
         $conn->close();
 
         return $databases;
+    }
+
+    public function createDatabase($databaseName) {
+        $conn = $this->mysqlConnection();
+
+        $query = "CREATE SCHEMA " . $databaseName;
+
+        return $conn->query($query);
     }
 
     public function getTables($database) {

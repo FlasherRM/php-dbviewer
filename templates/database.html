@@ -51,6 +51,7 @@
 
 </head>
 <body>
+{% include 'addDBModal.html' %}
 <div class="container">
     {% include 'sidebar.html' with {'databases': databases} %}
     <div class="content">
@@ -64,5 +65,7 @@
         </ul>
     </div>
 </div>
+
+<script src="assets/script.js"></script>
 </body>
 </html>
